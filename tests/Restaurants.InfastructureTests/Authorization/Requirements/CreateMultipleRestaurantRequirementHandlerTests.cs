@@ -54,7 +54,7 @@ public class CreateMultipleRestaurantRequirementHandlerTests
 
         restaurantsRepositoryMock.Setup(r => r.GetAllAsync()).ReturnsAsync(restaurants);
         var requirement = new CreateMultipleRestaurantRequirement(2);
-        var context = new AuthorizationHandlerContext([requirement],null,null);
+        var context = new AuthorizationHandlerContext([requirement],null!,null!);
         var requirementHandler = new CreateMultipleRestaurantRequirementHandler
             (
                 loggerMock.Object, 
@@ -110,7 +110,7 @@ public class CreateMultipleRestaurantRequirementHandlerTests
 
         restaurantsRepositoryMock.Setup(r => r.GetAllAsync()).ReturnsAsync(restaurants);
         var requirement = new CreateMultipleRestaurantRequirement(2);
-        var context = new AuthorizationHandlerContext([requirement], null, null);
+        var context = new AuthorizationHandlerContext([requirement], null!, null!);
         var requirementHandler = new CreateMultipleRestaurantRequirementHandler
             (
                 loggerMock.Object,
