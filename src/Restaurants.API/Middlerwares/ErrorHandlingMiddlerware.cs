@@ -22,7 +22,13 @@ public class ErrorHandlingMiddlerware(ILogger<ErrorHandlingMiddlerware> logger) 
             context.Response.StatusCode = 403;
             await context.Response.WriteAsync("Access forbidden");
         }
-        catch(Exception ex)
+        catch (UnauthorizedException)
+        {
+            context.Response.StatusCode = 401;
+            await context.Response.WriteAsync("UnAuthorized User");
+        }
+      
+        catch (Exception ex)
         {
 
             logger.LogError(ex,ex.Message);
