@@ -6,8 +6,8 @@ using Restaurants.API.Middlerwares;
 using Restaurants.Domain.Entities;
 using Restaurants.API.Extensions;
 using Restaurants.Applications.Extensions;
-try
-{
+/*try
+{*/
 
     var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddApplication();
@@ -37,7 +37,7 @@ try
     app.MapControllers();
 
     app.Run();
-}
+/*}
 catch(Exception ex)
 {
     Log.Fatal(ex, "Application startup failed");
@@ -45,5 +45,6 @@ catch(Exception ex)
 finally
 {
     Log.CloseAndFlush();
-}
+}*/
 public partial class Program{ }
+
