@@ -1,0 +1,86 @@
+@host= https://localhost
+@port= 7027
+@token=CfDJ8Gdf2LseeWtJnv6KKZxPDJlERf3lb4GXKI_Q1ITIMQ9ZUWj1DKiDx51w59upgGMuVfJsnETx7oJKNixs2oXxNlaoobIsjuAaKLSpXCm6-AOsQ-lRCunga-TwkuFCJwbIUIg5iuYWX3XLkPAbqsAPnl6xm1qM3Z85ZqjQRIv_K6Iag6EaJnVLXT_TBUILIAp3i4yXv-Zpr1bG4bimMr6-wTqmnfs-LgExSCGO-MA6y9zeeMb0pEYiLDtfDkO1U7IS6WaHTTrxYklUIV1eSomQfyZ4WSGKgcm3VC0VQc4kHXHCEcLZGA0LMP4_t8YxgjcSfETSOBlHfrewrB-C_HKA2vhESXBu5zv3bCnBZs5IeTi4EOcNLqyyQ2ZPG4UBKe7shQI_sxcj3_pfq0Mkgf_q7EB16mSdQStDFTwLpCfu3MSR8J7V2kQHfcoHgI5x7uHa3vdYTisH52NvuTWIzVwv1WA-gwvqPD_wKunsxuF5Kzmurx7HAumj1r7obUa6hHEkXAjQxF79GBYvi6U5wm0Qoj7g37YsyrfBzXkbRMlQp9OpJBt_9e40o_qTC2lUSFUMjpmwpHn3wIgWIAolB_zyEmc5qUWlIBsk0zbhlmgSYPcEGSFVqtaGTJlGoZ6Mzdlsl-GO8nFdmlguopT_nOujE_laU1e3zzSZXHR-fcox7SVmY30GonGjTJ6t9bqkh9KW1EDkaveSEpw2yoNFvfuSm4wsjD9r1TkpmbO8TyZeOB4K3bUz0myZv4RszP2pHN0yfiPIhZ6Ywx3mXyiOXD0s43pCf1hih5FkesvR5i_Mn5zPVz_95GCzlZBIx_SZS39RCRA819unAD0PC8UuxH643RkG86kA9xBGNnJXWO2L_vLcPGaliQU4JZI4N5HI3Dd_tQ
+@Restaurants.API_HostAddress={{host}}:{{port}}
+
+
+
+###
+
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants?searchPhrase=man&pageSize=5&pageNumber=3&sortBy=Name
+Authorization: Bearer {{token}}
+###
+GET {{Restaurants.API_HostAddress}}/api/restaurants/8
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "Name": "Tasty Test4",
+  "Category":"Indian",
+  "Description": "A cozy resturant serving a variety of deslicious dishes.",
+  "HasDelivery": true,
+  "ContactEmail":"info@test.com",
+  "ContactNumber":"+972599123457",
+  "City":"New York",
+  "Street":"123 main street",
+  "PostalCode":"10-010"
+}
+###
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/9
+
+###
+GET https://localhost:7027/api/restaurants/7
+
+###
+
+
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/8
+Content-Type: application/json
+
+{
+  "Name":"Testttttt",
+  "Description": "Testttttt (short for Kentucky Fried Chicken) is an American fast food restaurant chain headquartered in Louisville, Kentucky, that specializes in fried chicken.",
+  "HasDelivery":false
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+Content-Type: application/json
+
+{
+  "Name": "Spaghetti Bolognese",
+  "Description": "Classic Italian pasta dish with rich meat sauce",
+  "Price":-1,
+  "KiloCalories":-1
+}
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+
+###
+GET  https://localhost:7027/api/restaurants/3/dishes/10 
+###
+POST {{Restaurants.API_HostAddress}}/api/identity/register
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "Password1!"
+}
+###
+POST {{Restaurants.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+  "email": "owner@test.com",
+  "password": "Password1!"
+}
+
+

@@ -1,0 +1,65 @@
+## Ignore Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Build results
+bin/
+obj/
+
+## .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## ASP.NET Core
+wwwroot/lib/
+wwwroot/dist/
+
+## User-specific files
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+
+## Environment variables
+.env
+.env.*
+
+## Logs
+logs/
+*.log
+
+## OS generated files
+.DS_Store
+Thumbs.db
+
+## Rider / VS Code
+.idea/
+.vscode/
+*.code-workspace
+
+## Publish output
+publish/
+*.Publish.xml
+*.pubxml
+
+## Azure / IIS
+aspnetcore-*.json
+iisSettings.json
+
+## Database / Local DB
+*.mdf
+*.ldf
+
+## Test results
+TestResults/
+
+## Node (if used for frontend or tooling)
+node_modules/
+
+## NuGet
+packages/
+*.nupkg
+.nuget/
