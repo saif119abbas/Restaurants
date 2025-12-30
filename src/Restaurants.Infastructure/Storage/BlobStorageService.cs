@@ -18,7 +18,7 @@ public class BlobStorageService(IOptions<BlobStorageSettings> blobStorageSetting
        var blobUri= blobClient.Uri.ToString();
        return blobUri;
     }
-    public string? GetBlobUri(string blobUrl)
+    public string GetBlobUri(string blobUrl)
     {
         var sasBuilder = new BlobSasBuilder()
         {
@@ -36,7 +36,7 @@ public class BlobStorageService(IOptions<BlobStorageSettings> blobStorageSetting
 
         return $"{blobUrl}?{sasToken}";
     }
-    private string ? GetNameFromUrl(string url)
+    private string GetNameFromUrl(string url)
     {
         var uri = new Uri(url);
         return uri.Segments.Last();

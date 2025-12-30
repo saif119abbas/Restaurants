@@ -22,8 +22,10 @@ public class GetRestaurantByIdQueryHandler
         var restaurant = await restaurantsRepository.GetByIdAsync(request.Id)
                         ?? throw new NotFoundException(nameof(Restaurant), request.Id.ToString());
         var restaurantDto = mapper.Map<RestaurantDto>(restaurant);
-        restaurantDto.LogoSasUrl = blobStorageService.GetBlobUri(restaurant.LogoUrl)??null;
-        
+        restaurantDto.LogoSasUrl = restaurant.LogoUrl is null? null
+                                  : blobStorageService.GetBlobUri(restaurant.LogoUrl);
+
+
         return restaurantDto;
     }
 }

@@ -2,6 +2,7 @@
 using Restaurants.Applications.Users;
 using Restaurants.Domain.Constatnts;
 using Restaurants.Domain.Entities;
+using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Interfaces;
 
 namespace Restaurants.Infastructure.Authorization.Services;
@@ -15,6 +16,10 @@ public class RestaurantAuthorizationService
     public bool Authorize(Restaurant restaurant, ResourceOperation resourceOperation )
     {
         var user = userContext.GetCurrentUser();
+        if(user == null)
+        {
+            throw new UnauthorizedException();
+        }
         logger.LogInformation("Authorizing user {UserEmail}, to {Operation} for restaurant {RestaurantName}",
             user.Email,
             resourceOperation,

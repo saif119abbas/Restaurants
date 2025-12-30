@@ -36,9 +36,10 @@ internal class RestaurantsRepository(RestaurantsDbContext context) : IRestaurant
         string? sortBy, 
         SortDirection sortDirection)
     {
-        string query = searchPhrase?.ToLower();
+        //string query = searchPhrase.ToLower();
+
         var basedQuery = context.Restaurants
-             .Where(r => query == null || r.Name.ToLower().Contains(query) || r.Description.ToLower().Contains(query));
+             .Where(r => searchPhrase== null || r.Name.ToLower().Contains(searchPhrase.ToLower()) || r.Description.ToLower().Contains(searchPhrase.ToLower()));
         var totalCount = await basedQuery.CountAsync();
         if(sortBy!=null)
         {
