@@ -20,6 +20,7 @@ public class RestaurantControllerTests:IClassFixture<WebApplicationFactory<Progr
 {
     private readonly WebApplicationFactory<Program> _factory;
     private readonly Mock<IRestaurantsRepository > _restaurantsRepositoryMock=new();
+    private readonly Mock<IRestaruntSeeder> _restaurantsSeederMock = new();
 
     public RestaurantControllerTests(WebApplicationFactory<Program> factory)
     {
@@ -30,6 +31,8 @@ public class RestaurantControllerTests:IClassFixture<WebApplicationFactory<Progr
                 services.AddScoped<IPolicyEvaluator,FakePolicyEvalutor>();
                 services.Replace(ServiceDescriptor.Scoped(typeof(IRestaurantsRepository),
                     _=> _restaurantsRepositoryMock.Object));
+                services.Replace(ServiceDescriptor.Scoped(typeof(IRestaruntSeeder),
+                                            _ => _restaurantsSeederMock.Object));
             });
         });
     }
@@ -39,6 +42,7 @@ public class RestaurantControllerTests:IClassFixture<WebApplicationFactory<Progr
     {
         //arrange
         var clinet=_factory.CreateClient();
+
         //act
         var result = await clinet.GetAsync("/api/restaurants?pageNumber=1&pageSize=10");
         //assert
