@@ -20,6 +20,12 @@ public class CreateRestaurantCommandHandler
     public async Task<int> Handle(CreateRestaurantCommand request, CancellationToken cancellationToken)
     {
         var user = userContext.GetCurrentUser();
+        if(user == null) ///new
+        {
+
+            throw new UnauthorizedException();
+        }
+
         logger.LogInformation("{UserEmail} [{UserId}] Creating a new restaurant: {@Restaurant}",
             user.Email,
             user.Id,

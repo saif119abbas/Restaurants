@@ -16,11 +16,15 @@ public class UpdateUserDetailsCommandHandler(
     public async Task Handle(UpdateUserDetailsCommand request, CancellationToken cancellationToken)
     {
         var user = userContext.GetCurrentUser();
-        logger.LogInformation("Updating user:{UserId}, with {@Request}", user?.Id, request);
-        var dbUser = await userStore.FindByIdAsync(user?.Id, cancellationToken);
+        if(user == null) //new
+        {
+            throw new UnauthorizedException();
+        }
+        logger.LogInformation("Updating user:{UserId}, with {@Request}", user.Id, request);
+        var dbUser = await userStore.FindByIdAsync(user.Id, cancellationToken);
         if(dbUser==null)
         {
-            throw new NotFoundException(nameof(User), user?.Id);
+            throw new NotFoundException(nameof(User), user.Id);
         }
         dbUser.DateOfBirth = request.DateOfBirth;
         dbUser.Nationality=request.Nationality;
