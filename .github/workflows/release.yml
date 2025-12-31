@@ -20,7 +20,7 @@ jobs:
        - name: Build dependencies
          run: dotnet build --no-restore
        - name: Publish
-         run: dotnet publish --no-build .\src\Restaurants.API\Restaurants.API.csproj -o ${{env.DOTNET_ROOT}}\api  --no-build 
+         run: dotnet publish --no-build ./src/Restaurants.API/Restaurants.API.csproj -o ${{env.DOTNET_ROOT}}/api  --no-build 
        - name: Upload a Build Artifact
          uses: actions/upload-artifact@v6.0.0
          with:
